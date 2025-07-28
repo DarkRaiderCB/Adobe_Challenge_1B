@@ -2,6 +2,8 @@
 
 This project provides an intelligent PDF analysis pipeline that extracts, ranks, and summarizes relevant sections of PDF documents based on a given **persona** and their **job-to-be-done** (JTBD). It is ideal for creating contextual, role-based summaries to aid decision-making or planning tasks.
 
+---
+
 ## Overview (Approach)
 
 The solution follows a structured pipeline:
@@ -47,6 +49,8 @@ The solution follows a structured pipeline:
 | Vector Similarity | `cosine similarity (util.cos_sim)` from `sentence-transformers` |
 | Utility Libraries | `json`, `os`, `sys`, `re`, `datetime`, `time`                   |
 
+---
+
 ## Using Docker
 
 ### 1. Build the Docker Image
@@ -68,10 +72,13 @@ docker run --rm -it --network none \
   -v $(pwd):/app \
   pdf-json-runner
 ```
+---
 
-### Notes:
+## Notes:
 
 * The script will prompt for Persona Role and Job-to-be-Done via command line.
 * Output (`challenge1b_output.json`) will be saved in the host machine with above command.
 * Important: Before running the docker build command please download the model files from [here](https://drive.google.com/drive/folders/18MOpw__TyYojenJfQoDVYQnzvzqTYcM6?usp=sharing). You'd need to download and extract the files and once you go inside the unzipped folder, you'll get a folder with name `model`. Then proceed with the Docker setup. Copy and save it in the project root. Using this since our Git LFS is already used up.
+
+---
 

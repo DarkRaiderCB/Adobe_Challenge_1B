@@ -354,7 +354,7 @@ def run_persona_analysis(input_json_path, pdf_directory):
     print("-> Loading sentence-transformer model (paraphrase-MiniLM-L6-v2)...", file=sys.stderr)
     try:
         sentence_model_path = os.path.join(model_dir, 'paraphrase-MiniLM-L6-v2')
-        model = SentenceTransformer('paraphrase-MiniLM-L6-v2', cache_folder=model_dir)
+        model = SentenceTransformer(sentence_model_path)
         print("-> Sentence transformer model loaded successfully.", file=sys.stderr)
     except Exception as e:
         print(f"Error loading sentence transformer model: {e}", file=sys.stderr)
@@ -362,11 +362,12 @@ def run_persona_analysis(input_json_path, pdf_directory):
 
     print("-> Loading summarization model (Falconsai/text_summarization)...", file=sys.stderr)
     try:
+        summarizer_model_path = os.path.join(model_dir, 'text_summarization')
         summarizer = pipeline(
-            "summarization", 
-            model="Falconsai/text_summarization",
-            device=-1,
-            model_kwargs={"cache_dir": model_dir}
+            "summarization",
+            model=summarizer_model_path,
+            tokenizer=summarizer_model_path,
+            device=-1
         )
         print("-> Summarization model loaded successfully.", file=sys.stderr)
     except Exception as e:

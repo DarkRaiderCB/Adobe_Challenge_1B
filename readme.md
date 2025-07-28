@@ -70,7 +70,7 @@ docker run --rm -it --network none \
   -v $(pwd)/input:/app/input \
   -v $(pwd)/model:/app/model \
   -v $(pwd):/app \
-  pdf-json-runner
+  sol2:id2
 ```
 ---
 
